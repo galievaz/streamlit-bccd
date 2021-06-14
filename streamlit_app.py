@@ -18,9 +18,9 @@ import matplotlib.pyplot as plt
 st.sidebar.write('#### Select an image to upload.')
 uploaded_file = st.sidebar.file_uploader('',
                                          type=['png', 'jpg', 'jpeg'],
-                                         accept_multiple_files=False)
+                                         accept_multiple_files=True)
 
-st.sidebar.write('[Find additional images on Roboflow.](https://public.roboflow.com/object-detection/bccd/)')
+st.sidebar.write('[Find additional sample images on this page.](https://garrettmotion.sharepoint.com/:u:/r/teams/hackathon2021/Shared%20Documents/sample-data.zip?csf=1&web=1&e=aaOKyr)')
 
 ## Add in sliders.
 confidence_threshold = st.sidebar.slider('Confidence threshold: What is the minimum acceptable confidence level for displaying a bounding box?', 0.0, 1.0, 0.5, 0.01)
@@ -45,7 +45,7 @@ st.write('# Blood Cell Count Object Detection')
 ## Pull in default image or user-selected image.
 if uploaded_file is None:
     # Default image.
-    url = 'https://github.com/matthewbrems/streamlit-bccd/blob/master/BCCD_sample_images/BloodImage_00038_jpg.rf.6551ec67098bc650dd650def4e8a8e98.jpg?raw=true'
+    url = 'https://github.com/galievaz/hackaton_turbo/blob/main/AnyConv.com__images%20-%202021-05-21T123232.593.jpg'
     image = Image.open(requests.get(url, stream=True).raw)
 
 else:
