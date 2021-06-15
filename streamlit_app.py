@@ -18,7 +18,7 @@ import matplotlib.pyplot as plt
 st.sidebar.write('#### Select an image to upload.')
 uploaded_file = st.sidebar.file_uploader('',
                                          type=['png', 'jpg', 'jpeg'],
-                                         accept_multiple_files=True)
+                                         accept_multiple_files=False)
 
 st.sidebar.write('[Find additional sample images on this page.](https://garrettmotion.sharepoint.com/:u:/r/teams/hackathon2021/Shared%20Documents/sample-data.zip?csf=1&web=1&e=aaOKyr)')
 
@@ -40,7 +40,7 @@ st.sidebar.image(image,
 ##########
 
 ## Title.
-st.write('# Blood Cell Count Object Detection')
+st.write('# Turbochargers Object Detection')
 
 ## Pull in default image or user-selected image.
 if uploaded_file is None:
@@ -65,8 +65,8 @@ img_str = img_str.decode('ascii')
 
 ## Construct the URL to retrieve image.
 upload_url = ''.join([
-    'https://infer.roboflow.com/rf-bccd-bkpj9--1',
-    '?access_token=vbIBKNgIXqAQ',
+    'https://detect.roboflow.com/?model=new-turbo-detection&version=1',
+    '?access_token=qEEZEGhUKYyHSia63UdS',
     '&format=image',
     f'&overlap={overlap_threshold * 100}',
     f'&confidence={confidence_threshold * 100}',
@@ -93,8 +93,8 @@ st.image(image,
 
 ## Construct the URL to retrieve JSON.
 upload_url = ''.join([
-    'https://infer.roboflow.com/rf-bccd-bkpj9--1',
-    '?access_token=vbIBKNgIXqAQ'
+    'https:/detect.roboflow.com/?model=new-turbo-detection&version=1',
+    '?access_token=qEEZEGhUKYyHSia63UdS'
 ])
 
 ## POST to the API.
