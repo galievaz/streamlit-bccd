@@ -94,7 +94,7 @@ image.save(buffered, quality=90, format='JPEG')
 # Base 64 encode.
 img_str = base64.b64encode(buffered.getvalue())
 img_str = img_str.decode('ascii')
-
+upload_url='https://detect.roboflow.com/?model=new-turbo-detection&version=1&api_key=qEEZEGhUKYyHSia63UdS'
 ## Construct the URL to retrieve image.
 upload_url = ''.join([
     'https://detect.roboflow.com/?model=new-turbo-detection&version=1',
@@ -128,7 +128,7 @@ upload_url = ''.join([
     'https:/detect.roboflow.com/?model=new-turbo-detection&version=1',
     '?access_token=qEEZEGhUKYyHSia63UdS'
 ])
-
+upload_url='https://detect.roboflow.com/?model=new-turbo-detection&version=1&api_key=qEEZEGhUKYyHSia63UdS'
 ## POST to the API.
 r = requests.post(upload_url,
                   data=img_str,
