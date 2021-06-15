@@ -20,9 +20,7 @@ def get_static_store() -> Dict:
 static_store = get_static_store()
 
 st.info(__doc__)
-result = st.sidebar.file_uploader('',
-                                         type='zip',
-                                         accept_multiple_files=False)
+result = st.file_uploader("Upload", type=['jpg', 'jpeg', 'png'])
 uploaded_file=result
 if result:
         # Process you file here
