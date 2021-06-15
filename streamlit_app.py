@@ -8,6 +8,40 @@ from base64 import decodebytes
 from io import BytesIO
 import numpy as np
 import matplotlib.pyplot as plt
+from typing import Dict
+
+import streamlit as st
+
+
+@st.cache(allow_output_mutation=True)
+def get_static_store() -> Dict:
+    """This dictionary is initialized once and can be used to store the files uploaded"""
+    return {}
+static_store = get_static_store()
+
+st.info(__doc__)
+result = st.sidebar.file_uploader('',
+                                         type='zip',
+                                         accept_multiple_files=False)
+uploaded_file=result
+if result:
+        # Process you file here
+        value = result.getvalue()
+
+        # And add it to the static_store if not already in
+        if not value in static_store.values():
+            static_store[result] = value
+else:
+        static_store.clear()  # Hack to clear list if the user clears the cache and reloads the page
+        st.info("Upload one or more `.jpg` files.")
+
+if st.button("Clear file list"):
+    static_store.clear()
+if st.checkbox("Show file list?", True):
+    st.write(list(static_store.keys()))
+if st.checkbox("Show content of files?"):
+    for value in static_store.values():
+        st.code(value)
 
 ##########
 ##### Set up sidebar.
@@ -16,9 +50,7 @@ import matplotlib.pyplot as plt
 # Add in location to select image.
 
 st.sidebar.write('#### Select an image to upload.')
-uploaded_file = st.sidebar.file_uploader('',
-                                         type=['png', 'jpg', 'jpeg'],
-                                         accept_multiple_files=False)
+
 
 st.sidebar.write('[Find additional sample images on this page.](https://garrettmotion.sharepoint.com/:u:/r/teams/hackathon2021/Shared%20Documents/sample-data.zip?csf=1&web=1&e=aaOKyr)')
 
