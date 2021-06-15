@@ -45,7 +45,7 @@ st.write('# Turbochargers Object Detection')
 ## Pull in default image or user-selected image.
 if uploaded_file is None:
     # Default image.
-    url = 'https://github.com/galievaz/hackaton_turbo/blob/main/AnyConv.com__images%20-%202021-05-21T123232.593.jpg'
+    url = 'https://github.com/matthewbrems/streamlit-bccd/blob/master/BCCD_sample_images/BloodImage_00038_jpg.rf.6551ec67098bc650dd650def4e8a8e98.jpg?raw=true'
     image = Image.open(requests.get(url, stream=True).raw)
 
 else:
