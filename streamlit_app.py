@@ -78,7 +78,7 @@ upload_url = ''.join([
     '&stroke=2',
     '&labels=True'
 ])
-
+upload_url='https://detect.roboflow.com/?model=new-turbo-detection&version=1&api_key=qEEZEGhUKYyHSia63UdS'
 ## POST to the API.
 r = requests.post(upload_url,
                   data=img_str,
